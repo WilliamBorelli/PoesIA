@@ -6,6 +6,8 @@ import random
 from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
+from textblob import TextBlob
+from deep_translator import GoogleTranslator
 
 # Bibliotecas Web
 from flask import Flask, request, jsonify, send_from_directory
