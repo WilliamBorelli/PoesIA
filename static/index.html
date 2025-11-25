@@ -38,7 +38,7 @@
 </div>
 
 <div class="container result-box" id="result-box">
-    <span id="sentiment-analysis" class="sentiment-label"></span>
+    
     <div id="poetry-output" class="poem-content"></div>
     <br>
     <button onclick="location.reload()">Buscar Outro</button>
@@ -52,7 +52,7 @@ async function processSentiment() {
     const resultBox = document.getElementById('result-box');
     const inputSection = document.getElementById('input-section'); // Para esconder o input
     const poetryOutput = document.getElementById('poetry-output');
-    const sentimentAnalysis = document.getElementById('sentiment-analysis');
+    
 
     const userDescription = descriptionInput.value.trim();
 
@@ -80,7 +80,7 @@ async function processSentiment() {
         }
 
         // Sucesso
-        sentimentAnalysis.textContent = data.sentiment;
+        
         poetryOutput.textContent = data.poem;
         
         // Troca a visualização
