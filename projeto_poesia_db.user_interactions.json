@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "6924cd460f595a36eeb8bf7b"
+  },
+  "user_input": "Estou me sentindo reflexivo e pensando sobre o tempo",
+  "detected_sentiment": "neutral",
+  "recommended_poem_id": {
+    "$oid": "690a3219ca340e29c0c1bc2a"
+  },
+  "timestamp": {
+    "$date": "2025-11-24T21:25:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6924e188b271025da57ffa9e"
+  },
+  "user_input": "Estou me sentindo triste hoje. Gostaria de algo que me anime",
+  "detected_sentiment": "neutral",
+  "recommended_poem_id": {
+    "$oid": "690a3218ca340e29c0c198d3"
+  },
+  "timestamp": {
+    "$date": "2025-11-24T22:51:52.131Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6924e1b4b271025da57ffa9f"
+  },
+  "user_input": "Estou pensando bastante sobre a vida e a morte ultimamente",
+  "detected_sentiment": "neutral",
+  "recommended_poem_id": {
+    "$oid": "690a3219ca340e29c0c1c497"
+  },
+  "timestamp": {
+    "$date": "2025-11-24T22:52:36.216Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6924e504b271025da57ffaa0"
+  },
+  "user_input": "Estou me sentindo bastante animado e empolgado",
+  "detected_sentiment": "neutral",
+  "recommended_poem_id": {
+    "$oid": "690a3219ca340e29c0c1b72a"
+  },
+  "timestamp": {
+    "$date": "2025-11-24T23:06:44.290Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6924e517b271025da57ffaa1"
+  },
+  "user_input": "Estou muito feliz!",
+  "detected_sentiment": "neutral",
+  "recommended_poem_id": {
+    "$oid": "690a3218ca340e29c0c1a38d"
+  },
+  "timestamp": {
+    "$date": "2025-11-24T23:07:03.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6924e535b271025da57ffaa2"
+  },
+  "user_input": "Estou extremamente triste! Penso frequentemente em me ferir",
+  "detected_sentiment": "neutral",
+  "recommended_poem_id": {
+    "$oid": "690a3219ca340e29c0c1b0cd"
+  },
+  "timestamp": {
+    "$date": "2025-11-24T23:07:33.641Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6924ee7ab271025da57ffaa3"
+  },
+  "user_input": "Estou pensativo hoje.",
+  "detected_sentiment": "neutral",
+  "recommended_poem_id": {
+    "$oid": "690a3218ca340e29c0c1a836"
+  },
+  "timestamp": {
+    "$date": "2025-11-24T23:47:06.804Z"
+  }
+}]

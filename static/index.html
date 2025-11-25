@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oráculo Poético</title>
+    <style>
+        body { font-family: 'Georgia', serif; background-color: #f4f1ea; color: #2c3e50; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 600px; width: 100%; }
+        h1 { text-align: center; color: #8e44ad; }
+        textarea { width: 100%; height: 100px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: sans-serif; }
+        button { width: 100%; padding: 10px; background-color: #8e44ad; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background 0.3s; }
+        button:hover { background-color: #732d91; }
+        button:disabled { background-color: #ccc; cursor: not-allowed; }
+        
+        .result-box { margin-top: 20px; padding: 20px; background-color: #fafafa; border-left: 4px solid #8e44ad; display: none; }
+        .result-box-show { display: block; animation: fadeIn 0.5s; }
+        .sentiment-label { font-weight: bold; color: #e67e22; margin-bottom: 10px; display: block; }
+        .poem-content { white-space: pre-wrap; font-style: italic; line-height: 1.6; }
+        
+        .loading { text-align: center; display: none; margin-top: 10px; }
+        .hidden { display: none; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container" id="input-section">
+    <h1>PoesIA</h1>
+    <p>Como você está se sentindo hoje? Descreva seu momento e receba um poema.</p>
+    
+    <textarea id="description-input" placeholder="Ex: Estou me sentindo reflexivo e pensando sobre o tempo..."></textarea>
+    
+    <button id="submit-button" onclick="processSentiment()">Receber Poema</button>
+    
+    <div id="loading-indicator" class="loading">Consultando as musas...</div>
+</div>
+
+<div class="container result-box" id="result-box">
+    <span id="sentiment-analysis" class="sentiment-label"></span>
+    <div id="poetry-output" class="poem-content"></div>
+    <br>
+    <button onclick="location.reload()">Buscar Outro</button>
+</div>
+
+<script>
+async function processSentiment() {
+    const descriptionInput = document.getElementById('description-input');
+    const submitButton = document.getElementById('submit-button');
+    const loadingIndicator = document.getElementById('loading-indicator');
+    const resultBox = document.getElementById('result-box');
+    const inputSection = document.getElementById('input-section'); // Para esconder o input
+    const poetryOutput = document.getElementById('poetry-output');
+    const sentimentAnalysis = document.getElementById('sentiment-analysis');
+
+    const userDescription = descriptionInput.value.trim();
+
+    if (userDescription.length < 3) {
+        alert("Por favor, digite como você está se sentindo.");
+        return;
+    }
+
+    // UI loading
+    submitButton.disabled = true;
+    loadingIndicator.style.display = 'block';
+
+    try {
+        // Chama o endpoint /api/recommend
+        const resp = await fetch('/api/recommend', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({description: userDescription})
+        });
+        
+        const data = await resp.json();
+        
+        if (!data.ok) {
+            throw new Error(data.error || 'Erro desconhecido');
+        }
+
+        // Sucesso
+        sentimentAnalysis.textContent = data.sentiment;
+        poetryOutput.textContent = data.poem;
+        
+        // Troca a visualização
+        inputSection.style.display = 'none';
+        resultBox.classList.add('result-box-show');
+
+    } catch (err) {
+        console.error(err);
+        alert('Erro ao gerar recomendação: ' + err.message);
+        submitButton.disabled = false;
+        loadingIndicator.style.display = 'none';
+    }
+}
+</script>
+
+</body>
+</html>
